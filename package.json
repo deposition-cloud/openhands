@@ -1,0 +1,28 @@
+{
+  "name": "@deposition.cloud/openhands",
+  "version": "1.2.0",
+  "description": "<a name=\"readme-top\"></a>",
+  "main": "index.ts",
+  "scripts": {
+    "preinstall": "npx -y only-allow pnpm || (echo '❌ Use pnpm only. Cleaning up...'; rm -rf node_modules package-lock.json yarn.lock; exit 1)",
+    "test": "echo 'no tests'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/deposition.cloud/apps/openhands.git"
+  },
+  "keywords": [
+    "openhands",
+    "swe-agent",
+    "ai"
+  ],
+  "author": "reply@deposition.cloud",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://gitlab.com/deposition.cloud/apps/openhands/issues"
+  },
+  "homepage": "https://gitlab.com/deposition.cloud/apps/openhands#readme",
+  "devDependencies": {
+    "@types/node": "^22.15.29"
+  }
+}
