@@ -28,7 +28,7 @@ COPY ./pyproject.toml ./poetry.lock ./
 RUN touch README.md
 RUN export POETRY_CACHE_DIR && poetry install --no-root && rm -rf $POETRY_CACHE_DIR
 
-FROM python:3.12.3-slim AS openhands-app
+FROM python:3.12.3-slim AS dev
 
 WORKDIR /app
 

@@ -1,6 +1,35 @@
 {
-    // force *nix line endings so files don't look modified in container run from Windows clone
-    "files.eol": "\n",
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
+  "cSpell.words": [],
+  "cSpell.customDictionaries": {
+    "deposition": {
+      "name": "deposition",
+      "path": "~/.dotfiles/dictionaries/deposition.txt",
+      "scope": "workspace",
+      "addWords": true
+    },
+    "personal": {
+      "name": "personal",
+      "path": "~/.dotfiles/dictionaries/personal.txt",
+      "scope": "workspace",
+      "addWords": true
+    },
+    "questionable": {
+      "name": "questionable",
+      "path": "~/.dotfiles/dictionaries/questionable.txt",
+      "scope": "workspace",
+      "addWords": true
+    },
+    "ubisoft": {
+      "name": "ubisoft",
+      "path": "~/.dotfiles/dictionaries/ubisoft.txt",
+      "scope": "workspace",
+      "addWords": true
+    },
+    "universal": {
+      "name": "universal",
+      "path": "~/.dotfiles/dictionaries/universal.txt",
+      "scope": "workspace",
+      "addWords": true
+    }
+  }
 }
