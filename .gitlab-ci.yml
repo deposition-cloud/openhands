@@ -1,0 +1,91 @@
+stages:
+  - sync
+
+variables:
+  GIT_STRATEGY: none
+  GIT_DEPTH: 0
+
+sync:
+  stage: sync
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache git
+    - git config --global user.name  "Paul Cuciureanu"
+    - git config --global user.email "paul@cuciureanu.com"
+  only:
+    - main
+  script: |
+    set -euo pipefail
+
+    ############################
+    # 1. clone canonical repo  #
+    ############################
+    git clone "$CI_REPOSITORY_URL" repo
+    cd repo
+    git remote set-url --push origin "https://$GITLAB_TOKEN_USER:$GITLAB_TOKEN@gitlab.com/${CI_PROJECT_PATH}.git"
+
+    ###########################################
+    # 2. add the single github remote         #
+    #    • fetch  → upstream                  #
+    #    • push   → your fork                 #
+    ###########################################
+    git remote add github https://github.com/All-Hands-AI/OpenHands.git || true
+    git remote set-url --push github https://$GITHUB_USER:$GITHUB_TOKEN@github.com/deposition-cloud/openhands.git
+
+    #########################
+    # 3. fetch everything   #
+    #########################
+    git fetch origin
+    git fetch github
+
+    ########################################################
+    # 4. loop over all branches that exist in origin/*     #
+    ########################################################
+    for remote_ref in $(git for-each-ref --format='%(refname:strip=3)' refs/remotes/origin); do
+      BRANCH="$remote_ref"
+
+      # skip the symbolic ref
+      [ "$BRANCH" = "HEAD" ] && continue
+
+      echo "=== Syncing $BRANCH ==="
+
+      # check out the origin branch
+      git checkout -B "$BRANCH" "origin/$BRANCH"
+
+      # skip if upstream doesn't have this branch
+      if ! git show-ref --quiet refs/remotes/github/$BRANCH; then
+        echo "🔕 github/$BRANCH not found — skipping rebase"
+        continue
+      fi
+
+      # try rebasing on upstream — fail the job if it conflicts
+      if ! git rebase "github/$BRANCH"; then
+        cat << 'EOF'
+
+    ❌ [ERROR] Rebase conflict detected on branch: $BRANCH
+        CI sync has stopped to protect your golden source (origin/$BRANCH).
+
+    🛠 How to resolve:
+      1. Fetch the latest refs:
+          git fetch origin github
+      2. Switch to your branch:
+          git checkout $BRANCH
+      3. Rebase onto upstream:
+          git rebase github/$BRANCH
+      4. When conflicts occur, edit the files, then:
+          git add <resolved-files>
+          git rebase --continue
+      5. Once the rebase finishes cleanly, push your updates:
+          git push origin $BRANCH --force-with-lease
+
+    🔗 More details: https://docs.gitlab.com/ee/topics/git/rebase_conflicts.html
+
+    EOF
+        exit 1
+      fi
+
+      # push rebased branch to GitLab and GitHub fork
+      echo "✅ Rebase succeeded, pushing $BRANCH to origin and github..."
+      git push origin "$BRANCH"  --force-with-lease
+      git push github "$BRANCH"  --force # -with-lease
+    done
