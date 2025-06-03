@@ -1,5 +1,12 @@
 # OpenHands Changelog
 
+# [1.2.0](https://gitlab.com/deposition.cloud/apps/openhands/compare/v1.1.0...v1.2.0) (2025-06-03)
+
+
+### Features
+
+* **build:** setup custom semantic gitlab build ([275ae41](https://gitlab.com/deposition.cloud/apps/openhands/commit/275ae4179522a536b7df81ff445b550efa29a6fa))
+
 # [1.1.0](https://gitlab.com/deposition.cloud/apps/openhands/compare/v1.0.0...v1.1.0) (2025-06-03)
 
 
