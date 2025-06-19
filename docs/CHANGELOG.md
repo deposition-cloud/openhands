@@ -1,5 +1,30 @@
 # OpenHands Changelog
 
+# [1.4.0](https://gitlab.com/deposition.cloud/apps/openhands/compare/v1.3.0...v1.4.0) (2025-06-19)
+
+
+### Bug Fixes
+
+* Context window truncation makes progress ([#9052](https://gitlab.com/deposition.cloud/apps/openhands/issues/9052)) ([a356f56](https://gitlab.com/deposition.cloud/apps/openhands/commit/a356f56237c55b9149cc56d2e491ccd973d93909))
+* daytona runtime sandbox handling ([#9187](https://gitlab.com/deposition.cloud/apps/openhands/issues/9187)) ([bae6bd7](https://gitlab.com/deposition.cloud/apps/openhands/commit/bae6bd77f41e30a26ba04479f9fd66193adfe2dd))
+* **devcontainer:** mark workspace as safe dir ([#9136](https://gitlab.com/deposition.cloud/apps/openhands/issues/9136)) ([6a90659](https://gitlab.com/deposition.cloud/apps/openhands/commit/6a9065960d0b22e9327eafb4cc7c5a8f9eedfd7e))
+* fix unreachable runtime container in make docker-dev ([#9072](https://gitlab.com/deposition.cloud/apps/openhands/issues/9072)) ([f97a837](https://gitlab.com/deposition.cloud/apps/openhands/commit/f97a837d46c9d90712aac204d98860c52cd72fd3))
+* prevent LLM settings reset when page loses focus during initial setup ([#8928](https://gitlab.com/deposition.cloud/apps/openhands/issues/8928)) ([abec074](https://gitlab.com/deposition.cloud/apps/openhands/commit/abec074a66bd2fd624f45279b9a665a6a8944e8c))
+* **ui:** startup message ui ([#9007](https://gitlab.com/deposition.cloud/apps/openhands/issues/9007)) ([0581532](https://gitlab.com/deposition.cloud/apps/openhands/commit/058153292f2bf01fb4df1e51d4c3ae0adfdf7402))
+
+
+### Features
+
+* Add microagents UI to conversation context menu ([#8984](https://gitlab.com/deposition.cloud/apps/openhands/issues/8984)) ([3f50eb0](https://gitlab.com/deposition.cloud/apps/openhands/commit/3f50eb0079d1f076a0c1d1209ec26a130ce504f2))
+* **backend:** New "update microagent prompt" API ([#8357](https://gitlab.com/deposition.cloud/apps/openhands/issues/8357)) ([dca9c7b](https://gitlab.com/deposition.cloud/apps/openhands/commit/dca9c7bdc6a41b56285389043d58f99314c193b1))
+* **build:** setup custom semantic gitlab build ([203d9fb](https://gitlab.com/deposition.cloud/apps/openhands/commit/203d9fb9821b5afad75a65a3f9f5976c12a720df))
+* **chat:** support file upload ([#8945](https://gitlab.com/deposition.cloud/apps/openhands/issues/8945)) ([a9f26a1](https://gitlab.com/deposition.cloud/apps/openhands/commit/a9f26a13a646c0be127c6f4539dbc7ba67cfceb6))
+* **eval:** Support evaluation on SWE-bench-Live ([#9137](https://gitlab.com/deposition.cloud/apps/openhands/issues/9137)) ([a93b045](https://gitlab.com/deposition.cloud/apps/openhands/commit/a93b0457c67b043c99b4302675e7ca594838240f))
+* **frontend:** add user feedback Likert scale for agent performance rating (only on OH Cloud) ([#8992](https://gitlab.com/deposition.cloud/apps/openhands/issues/8992)) ([2c4ecd0](https://gitlab.com/deposition.cloud/apps/openhands/commit/2c4ecd02f7af9c17b0d668fc26aae2faea1a5003))
+* increase requests timeout to 60s ([#8974](https://gitlab.com/deposition.cloud/apps/openhands/issues/8974)) ([77a0c5e](https://gitlab.com/deposition.cloud/apps/openhands/commit/77a0c5e073b17fcc837f4250bd47794306d36855))
+* **runtime:** add kubernetes support ([#8814](https://gitlab.com/deposition.cloud/apps/openhands/issues/8814)) ([54af9ff](https://gitlab.com/deposition.cloud/apps/openhands/commit/54af9ff3fe63ee6d3253f6ecba4f86d6bef11276))
+* support dev container networking without host mode ([#9122](https://gitlab.com/deposition.cloud/apps/openhands/issues/9122)) ([47b0dc5](https://gitlab.com/deposition.cloud/apps/openhands/commit/47b0dc548e59dc4d7558038d2c516f1ddfe03372))
+
 # [1.3.0](https://gitlab.com/deposition.cloud/apps/openhands/compare/v1.2.0...v1.3.0) (2025-06-07)
 
 
